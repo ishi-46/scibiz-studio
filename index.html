@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciBiz Studio AI | Rwanda Academic & Business Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rwa: {
+                            gold: '#F2C94C',
+                            terracotta: '#C85A32',
+                            indigo: '#1E293B',
+                            lightBg: '#F8FAF9',
+                            cardBg: '#FFFFFF',
+                            green: '#27AE60',
+                            accent: '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        heading: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .imigongo-border {
+            background-color: #C85A32;
+            background-image: radial-gradient(#F2C94C 1px, transparent 1px), radial-gradient(#F2C94C 1px, #C85A32 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .imigongo-pattern {
+            background: linear-gradient(135deg, #1E293B 25%, transparent 25%) -20px 0,
+                        linear-gradient(225deg, #1E293B 25%, transparent 25%) -20px 0,
+                        linear-gradient(315deg, #1E293B 25%, transparent 25%),
+                        linear-gradient(45deg, #1E293B 25%, transparent 25%);
+            background-size: 40px 40px;
+            background-color: #0F172A;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-rwa-lightBg text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Top Culturally Styled Header Banner -->
+    <div class="h-2 imigongo-border"></div>
+
+    <!-- Navigation Header -->
+    <header class="bg-rwa-indigo text-white sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rwa-gold to-rwa-terracotta flex items-center justify-center font-bold text-white shadow-md text-xl">
+                    <i class="fa-solid font-heading">SB</i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                        SciBiz Studio <span class="text-xs bg-rwa-gold text-rwa-indigo font-black px-2 py-0.5 rounded uppercase">AI Rwanda</span>
+                    </h1>
+                    <p class="text-xs text-slate-300 font-medium">Academic Excellence & Local Business Hub</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="switchTab('client-view')" id="nav-client-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition">
+                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> Client Store
+                </button>
+                <button onclick="switchTab('admin-view')" id="nav-admin-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition">
+                    <i class="fa-solid fa-user-shield mr-1.5"></i> Owner Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ==================== CLIENT STORE VIEW ==================== -->
+        <section id="client-view" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gradient-to-r from-rwa-indigo via-slate-900 to-rwa-terracotta text-white p-8 sm:p-10">
+                <div class="relative z-10 max-w-2xl space-y-4">
+                    <span class="inline-block px-3 py-1 bg-rwa-gold/20 text-rwa-gold border border-rwa-gold/30 text-xs font-bold rounded-full uppercase tracking-wider">
+                        Murakaza Neza • All High School Subjects & Business Design
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        Quality Revision Notes & Professional Marketing Materials
+                    </h2>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                        Access summarized study sheets across all NESA high school combinations, or boost your local business with customized flyer packages. Delivered directly via WhatsApp!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Selection Tabs -->
+            <div class="flex flex-wrap gap-4 border-b border-slate-200 pb-4">
+                <button onclick="toggleClientCategory('academic')" id="cat-academic-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-rwa-indigo text-white shadow-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-book-open"></i> High School Academic Packs (All Subjects)
+                </button>
+                <button onclick="toggleClientCategory('business')" id="cat-business-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200 transition flex items-center gap-2">
+                    <i class="fa-solid fa-store"></i> Small Business Marketing Packs
+                </button>
+            </div>
+
+            <!-- ACADEMIC PACKS LIST -->
+            <div id="academic-category" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Academic Item 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Pure Sciences & PCB</span>
+                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">S4-S6 Biology & Chemistry Summaries</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Complete unit summary guides, key diagrams, organic chemistry mechanisms, and genetics past paper breakdowns.</p>
+                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Clear topic summaries</li>
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Past exam questions with answers</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Price</span>
+                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                        </div>
+                        <button onclick="openOrderModal('S4-S6 Biology & Chemistry Summaries', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                            Order via MoMo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Academic Item 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-md">Arts & Humanities</span>
+                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">History, Geography & Literature Cheat Sheets</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">High-yield revision notes covering major African and world history topics, map work guidelines, and literary analysis key points.</p>
+                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Structured essay templates</li>
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> National examination tips</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Price</span>
+                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                        </div>
+                        <button onclick="openOrderModal('History, Geography & Literature Cheat Sheets', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                            Order via MoMo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Academic Item 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-md">Business & Mathematics</span>
+                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">Economics, Entrepreneurship & Math Formula Sheets</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Step-by-step mathematical formulas, economics graphs simplified, and business case study templates for Senior students.</p>
+                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Quick formula cheat sheet</li>
+                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Worked calculation examples</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Price</span>
+                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                        </div>
+                        <button onclick="openOrderModal('Economics, Entrepreneurship & Math Formula Sheets', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                            Order via MoMo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUSINESS PACKS LIST -->
+            <div id="business-category" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
+                <!-- Business Package 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md">Starter Package</span>
+                            <span class="text-xs font-bold text-slate-400">WhatsApp / Instagram</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">3 Custom Business Flyers + WhatsApp Status Captions</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Get 3 professionally styled promotional flyers tailored to your shop, salon, or service, plus high-converting promotional text in Kinyarwanda or English.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Price</span>
+                            <span class="text-lg font-black text-rwa-terracotta">5,000 RWF</span>
+                        </div>
+                        <button onclick="openOrderModal('3 Custom Business Flyers + Captions', 5000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
+                            Order via MoMo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Package 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-md">Pro Branding</span>
+                            <span class="text-xs font-bold text-slate-400">Full Brand Identity</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">Full Marketing Pack (5 Flyers + Logo + Price List)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Complete digital visual overhaul for local businesses including 5 high-resolution flyers, business logo design, and formatted price catalog for WhatsApp status.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Price</span>
+                            <span class="text-lg font-black text-rwa-terracotta">10,000 RWF</span>
+                        </div>
+                        <button onclick="openOrderModal('Full Marketing Pack (5 Flyers + Logo + Price List)', 10000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
+                            Order via MoMo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== OWNER ADMIN VIEW ==================== -->
+        <section id="admin-view" class="space-y-8 hidden">
+            <!-- Owner Control Header -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                    <div>
+                        <span class="text-xs font-bold text-rwa-gold uppercase tracking-wider block">SciBiz Owner Control Panel</span>
+                        <h2 class="text-2xl font-bold">Admin Management & AI Studio</h2>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-rwa-green animate-pulse"></div>
+                        <span class="text-xs text-slate-300">MoMo Verification: <strong class="text-white">ACTIVE</strong></span>
+                    </div>
+                </div>
+
+                <!-- Metrics Overview -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                        <span class="text-xs text-slate-400 block">Total Revenue Earned</span>
+                        <span id="metric-revenue" class="text-2xl font-black text-rwa-gold">0 RWF</span>
+                    </div>
+                    <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                        <span class="text-xs text-slate-400 block">Pending MoMo Approvals</span>
+                        <span id="metric-pending" class="text-2xl font-black text-rwa-terracotta">0</span>
+                    </div>
+                    <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                        <span class="text-xs text-slate-400 block">Completed Deliveries</span>
+                        <span id="metric-completed" class="text-2xl font-black text-rwa-green">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Workspace Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column: Pending MoMo Orders Panel -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-receipt text-rwa-terracotta"></i> Incoming MoMo Orders
+                    </h3>
+                    <p class="text-xs text-slate-500">Verify client transaction IDs with your MTN/Airtel SMS messages before clicking approve.</p>
+
+                    <div id="orders-list" class="space-y-3 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
+                        <!-- Empty State -->
+                        <div id="empty-orders" class="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                            <i class="fa-solid fa-inbox text-3xl text-slate-300 mb-2"></i>
+                            <p class="text-xs text-slate-500">No pending orders yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: AI Generator Tool -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-rwa-indigo"></i> Fast AI Document & Marketing Content Studio
+                    </h3>
+                    <p class="text-xs text-slate-500">Generate instant summary notes or promotional flyers to copy and send directly to approved clients on WhatsApp.</p>
+
+                    <!-- Tool Tabs -->
+                    <div class="flex gap-2 border-b border-slate-200 pb-3">
+                        <button onclick="switchStudioTab('notes')" id="studio-tab-notes" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-indigo text-white">Academic Summaries</button>
+                        <button onclick="switchStudioTab('marketing')" id="studio-tab-mkt" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600">Business Captions</button>
+                    </div>
+
+                    <!-- Academic Notes Generator Controls -->
+                    <div id="studio-notes-panel" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Subject & Topic Name</label>
+                            <input type="text" id="gen-topic" placeholder="e.g. S6 Biology - Genetics & DNA Replication" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                        </div>
+                        <button onclick="generateNotesContent()" class="w-full py-2.5 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                            Generate Revision Summary
+                        </button>
+                    </div>
+
+                    <!-- Business Marketing Generator Controls -->
+                    <div id="studio-marketing-panel" class="space-y-3 hidden">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Business Name & Offer Details</label>
+                            <input type="text" id="gen-biz-name" placeholder="e.g. Kimi Electronics - Special discount on headphones" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                        </div>
+                        <button onclick="generateMarketingContent()" class="w-full py-2.5 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
+                            Generate Social Media Captions
+                        </button>
+                    </div>
+
+                    <!-- Output Area -->
+                    <div class="mt-4">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-slate-500">Generated Content Output:</span>
+                            <button onclick="copyOutputText()" class="text-xs text-rwa-indigo font-bold hover:underline"><i class="fa-regular fa-copy mr-1"></i> Copy All</button>
+                        </div>
+                        <textarea id="studio-output" rows="8" readonly class="w-full text-xs p-3 font-mono bg-slate-50 border border-slate-200 rounded-lg outline-none text-slate-800 leading-relaxed custom-scrollbar" placeholder="Generated text will appear here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Order Checkout Popup -->
+    <div id="order-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl relative border border-slate-100">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="space-y-1 border-b border-slate-100 pb-3">
+                <span class="text-xs font-bold text-rwa-terracotta uppercase">Confirm Order & Mobile Money Payment</span>
+                <h3 id="modal-item-title" class="font-bold text-slate-900 text-lg">Item Title</h3>
+                <p class="text-xs text-slate-500">Total Price: <strong id="modal-item-price" class="text-rwa-indigo">0 RWF</strong></p>
+            </div>
+
+            <!-- MoMo Instructions Box -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
+                <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Money Instructions:</p>
+                <p>Send payment to MTN MoMo code/number: <strong class="text-slate-900 underline">078X XXX XXX (SciBiz Studio)</strong></p>
+            </div>
+
+            <!-- Form Inputs -->
+            <div class="space-y-3 pt-1">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name</label>
+                    <input type="text" id="cust-name" placeholder="e.g. Mugisha Eric" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Your WhatsApp Phone Number</label>
+                    <input type="text" id="cust-phone" placeholder="0788000000" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">MoMo Transaction ID (TxID)</label>
+                    <input type="text" id="cust-txid" placeholder="e.g. 294810398" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                </div>
+            </div>
+
+            <button onclick="submitClientOrder()" class="w-full py-3 bg-rwa-green text-white font-bold text-sm rounded-xl hover:bg-emerald-700 transition shadow-md">
+                Submit Order & Connect on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script>
+        // State Storage
+        let activeOrders = [];
+        let totalRevenue = 0;
+        let pendingCount = 0;
+        let completedCount = 0;
+        let currentModalItem = { title: '', price: 0 };
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.getElementById('client-view').classList.add('hidden');
+            document.getElementById('admin-view').classList.add('hidden');
+            
+            document.getElementById(tabId).classList.remove('hidden');
+
+            const clientBtn = document.getElementById('nav-client-btn');
+            const adminBtn = document.getElementById('nav-admin-btn');
+
+            if (tabId === 'client-view') {
+                clientBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition";
+                adminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition";
+            } else {
+                adminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition";
+                clientBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition";
+            }
+        }
+
+        // Toggle Client Categories
+        function toggleClientCategory(cat) {
+            const academicPanel = document.getElementById('academic-category');
+            const businessPanel = document.getElementById('business-category');
+            const acadBtn = document.getElementById('cat-academic-btn');
+            const bizBtn = document.getElementById('cat-business-btn');
+
+            if (cat === 'academic') {
+                academicPanel.classList.remove('hidden');
+                businessPanel.classList.add('hidden');
+                acadBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-rwa-indigo text-white shadow-md transition flex items-center gap-2";
+                bizBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200 transition flex items-center gap-2";
+            } else {
+                businessPanel.classList.remove('hidden');
+                academicPanel.classList.add('hidden');
+                bizBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-rwa-indigo text-white shadow-md transition flex items-center gap-2";
+                acadBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200 transition flex items-center gap-2";
+            }
+        }
+
+        // Modal Handlers
+        function openOrderModal(title, price) {
+            currentModalItem = { title, price };
+            document.getElementById('modal-item-title').innerText = title;
+            document.getElementById('modal-item-price').innerText = price.toLocaleString() + ' RWF';
+            document.getElementById('order-modal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        // Submit Order Logic
+        function submitClientOrder() {
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const txid = document.getElementById('cust-txid').value.trim();
+
+            if (!name || !phone || !txid) {
+                alert('Please fill in all requested payment details.');
+                return;
+            }
+
+            const newOrder = {
+                id: Date.now(),
+                item: currentModalItem.title,
+                price: currentModalItem.price,
+                name: name,
+                phone: phone,
+                txid: txid,
+                status: 'pending'
+            };
+
+            activeOrders.push(newOrder);
+            pendingCount++;
+            updateMetrics();
+            renderOrders();
+
+            closeOrderModal();
+
+            // Clear inputs
+            document.getElementById('cust-name').value = '';
+            document.getElementById('cust-phone').value = '';
+            document.getElementById('cust-txid').value = '';
+
+            // Redirect to WhatsApp confirmation
+            const whatsappMsg = `Hello SciBiz Studio! I submitted an order for "${currentModalItem.title}" (${currentModalItem.price} RWF). My Name: ${name}, MoMo TxID: ${txid}`;
+            window.open(`https://wa.me/250780000000?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+        }
+
+        // Render Admin Orders
+        function renderOrders() {
+            const ordersList = document.getElementById('orders-list');
+            const emptyState = document.getElementById('empty-orders');
+
+            if (activeOrders.length === 0) {
+                emptyState.classList.remove('hidden');
+                ordersList.innerHTML = '';
+                ordersList.appendChild(emptyState);
+                return;
+            }
+
+            ordersList.innerHTML = '';
+            activeOrders.forEach(order => {
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-xl border ${order.status === 'pending' ? 'bg-amber-50/50 border-amber-200' : 'bg-emerald-50/50 border-emerald-200'} space-y-2`;
+                
+                card.innerHTML = `
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="font-bold ${order.status === 'pending' ? 'text-amber-800' : 'text-emerald-800'}">${order.item}</span>
+                        <span class="font-black text-slate-900">${order.price.toLocaleString()} RWF</span>
+                    </div>
+                    <div class="text-xs text-slate-600 space-y-0.5">
+                        <p><strong>Customer:</strong> ${order.name} (${order.phone})</p>
+                        <p><strong>MoMo TxID:</strong> <code class="bg-white px-1 py-0.5 rounded border border-slate-200 font-bold">${order.txid}</code></p>
+                    </div>
+                    ${order.status === 'pending' ? `
+                        <button onclick="approveOrder(${order.id})" class="w-full mt-2 py-1.5 bg-rwa-green text-white font-bold text-xs rounded-lg hover:bg-emerald-700 transition">
+                            Approve & Deliver Package
+                        </button>
+                    ` : `
+                        <div class="text-xs font-bold text-emerald-700 flex items-center gap-1 mt-1">
+                            <i class="fa-solid fa-circle-check"></i> Payment Approved & Delivered
+                        </div>
+                    `}
+                `;
+                ordersList.appendChild(card);
+            });
+        }
+
+        // Approve Order Logic
+        function approveOrder(orderId) {
+            const order = activeOrders.find(o => o.id === orderId);
+            if (order && order.status === 'pending') {
+                order.status = 'approved';
+                totalRevenue += order.price;
+                pendingCount--;
+                completedCount++;
+                updateMetrics();
+                renderOrders();
+            }
+        }
+
+        function updateMetrics() {
+            document.getElementById('metric-revenue').innerText = totalRevenue.toLocaleString() + ' RWF';
+            document.getElementById('metric-pending').innerText = pendingCount;
+            document.getElementById('metric-completed').innerText = completedCount;
+        }
+
+        // Studio Generator Tools
+        function switchStudioTab(tab) {
+            const notesPanel = document.getElementById('studio-notes-panel');
+            const mktPanel = document.getElementById('studio-marketing-panel');
+            const tabNotes = document.getElementById('studio-tab-notes');
+            const tabMkt = document.getElementById('studio-tab-mkt');
+
+            if (tab === 'notes') {
+                notesPanel.classList.remove('hidden');
+                mktPanel.classList.add('hidden');
+                tabNotes.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-indigo text-white";
+                tabMkt.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600";
+            } else {
+                mktPanel.classList.remove('hidden');
+                notesPanel.classList.add('hidden');
+                tabMkt.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-terracotta text-white";
+                tabNotes.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600";
+            }
+        }
+
+        function generateNotesContent() {
+            const topic = document.getElementById('gen-topic').value.trim() || 'General Revision Topic';
+            const output = `=========================================
+SCIBIZ STUDIO ACADEMIC REVISION GUIDE
+Topic: ${topic}
+Target: High School NESA Exam Preparation
+=========================================
+
+1. KEY DEFINITIONS & CORE CONCEPTS
+-----------------------------------------
+• Point 1: Fundamental principle overview with step-by-step breakdown.
+• Point 2: Core mechanism and critical exam terminology.
+
+2. EXAMINATION PAST PAPER SUMMARY
+-----------------------------------------
+Q1: Explain the primary mechanism involved in this unit.
+Ans: Direct step-by-step outline optimized for marking schemes.
+
+3. REVISION CHEAT SHEET SUMMARY
+-----------------------------------------
+• Memory Tip: Focus on keywords highlighted during national review.
+• Formula/Key Rule: Primary rule stated clearly for quick memorization.
+
+[Generated by SciBiz Studio AI - Kigali, Rwanda]`;
+
+            document.getElementById('studio-output').value = output;
+        }
+
+        function generateMarketingContent() {
+            const biz = document.getElementById('gen-biz-name').value.trim() || 'Local Store';
+            const output = `=========================================
+SCIBIZ MARKETING CAPTION PACK
+Business: ${biz}
+=========================================
+
+📱 WHATSAPP STATUS CAPTION (Kinyarwanda):
+"Muraho! 🇷🇼 Mwamaze kubona ibyiza twazaniye muri ${biz}? Quality yo ku rwego rwo hejuru ku giciro kiza! Hamagara cyangwa utwandikire kuri WhatsApp ubone ibyo ukeneye vuba!"
+
+📸 INSTAGRAM / FACEBOOK CAPTION (English):
+"Upgrade your style & quality with ${biz}! ✨ Unbeatable value and top-tier customer service right here in town. Send us a direct message to place your order today! 📦🚀"
+
+🎨 FLYER VISUAL CONCEPT LAYOUT:
+• Top Banner: Bold title featuring business name.
+• Center: Product showcase with badge highlighting special offer.
+• Bottom Bar: Phone number + WhatsApp call to action button.`;
+
+            document.getElementById('studio-output').value = output;
+        }
+
+        function copyOutputText() {
+            const textarea = document.getElementById('studio-output');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Content copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
