@@ -35,19 +35,20 @@
         }
     </script>
     <style>
+        /* Traditional Imigongo Geometric Pattern Border */
         .imigongo-border {
             background-color: #C85A32;
-            background-image: radial-gradient(#F2C94C 1px, transparent 1px), radial-gradient(#F2C94C 1px, #C85A32 1px);
+            background-image: 
+                linear-gradient(45deg, #F2C94C 25%, transparent 25%), 
+                linear-gradient(-45deg, #F2C94C 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #1E293B 75%), 
+                linear-gradient(-45deg, transparent 75%, #1E293B 75%);
             background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
         }
-        .imigongo-pattern {
-            background: linear-gradient(135deg, #1E293B 25%, transparent 25%) -20px 0,
-                        linear-gradient(225deg, #1E293B 25%, transparent 25%) -20px 0,
-                        linear-gradient(315deg, #1E293B 25%, transparent 25%),
-                        linear-gradient(45deg, #1E293B 25%, transparent 25%);
-            background-size: 40px 40px;
-            background-color: #0F172A;
+        .imigongo-bar {
+            background: linear-gradient(90deg, #C85A32 0%, #F2C94C 50%, #1E293B 100%);
+            height: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
@@ -63,15 +64,16 @@
 </head>
 <body class="bg-rwa-lightBg text-slate-800 font-sans min-h-screen flex flex-col antialiased">
 
-    <!-- Top Culturally Styled Header Banner -->
-    <div class="h-2 imigongo-border"></div>
+    <!-- Top Culturally Styled Imigongo Banner -->
+    <div class="h-3 imigongo-border"></div>
+    <div class="imigongo-bar"></div>
 
     <!-- Navigation Header -->
-    <header class="bg-rwa-indigo text-white sticky top-0 z-40 shadow-lg">
+    <header class="bg-rwa-indigo text-white sticky top-0 z-40 shadow-xl border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rwa-gold to-rwa-terracotta flex items-center justify-center font-bold text-white shadow-md text-xl">
-                    <i class="fa-solid font-heading">SB</i>
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rwa-gold to-rwa-terracotta flex items-center justify-center font-bold text-white shadow-md text-xl border border-rwa-gold/40">
+                    <span class="font-heading">SB</span>
                 </div>
                 <div>
                     <h1 class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
@@ -82,183 +84,229 @@
             </div>
 
             <div class="flex items-center space-x-3">
-                <button onclick="switchTab('client-view')" id="nav-client-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition">
-                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> Client Store
-                </button>
-                <button onclick="switchTab('admin-view')" id="nav-admin-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition">
-                    <i class="fa-solid fa-user-shield mr-1.5"></i> Owner Admin
-                </button>
+                <a href="#services-section" class="px-4 py-2 text-xs font-bold rounded-lg bg-rwa-gold text-rwa-indigo shadow hover:bg-amber-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-cart-shopping"></i> Browse Services
+                </a>
             </div>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
         <!-- ==================== CLIENT STORE VIEW ==================== -->
-        <section id="client-view" class="space-y-8">
+        <section id="client-view" class="space-y-10">
             <!-- Hero Banner -->
-            <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gradient-to-r from-rwa-indigo via-slate-900 to-rwa-terracotta text-white p-8 sm:p-10">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-r from-rwa-indigo via-slate-900 to-rwa-terracotta text-white p-8 sm:p-10 border border-rwa-gold/20">
                 <div class="relative z-10 max-w-2xl space-y-4">
                     <span class="inline-block px-3 py-1 bg-rwa-gold/20 text-rwa-gold border border-rwa-gold/30 text-xs font-bold rounded-full uppercase tracking-wider">
                         Murakaza Neza • All High School Subjects & Business Design
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                        Quality Revision Notes & Professional Marketing Materials
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading">
+                        International Standard Academic Guides & Business Marketing Studio
                     </h2>
                     <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
-                        Access summarized study sheets across all NESA high school combinations, or boost your local business with customized flyer packages. Delivered directly via WhatsApp!
+                        Access full, high-yield study packages aligned with national and international curricula, or elevate your local brand with custom digital marketing assets delivered directly via WhatsApp.
                     </p>
                 </div>
             </div>
 
-            <!-- Service Selection Tabs -->
-            <div class="flex flex-wrap gap-4 border-b border-slate-200 pb-4">
-                <button onclick="toggleClientCategory('academic')" id="cat-academic-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-rwa-indigo text-white shadow-md transition flex items-center gap-2">
-                    <i class="fa-solid fa-book-open"></i> High School Academic Packs (All Subjects)
-                </button>
-                <button onclick="toggleClientCategory('business')" id="cat-business-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200 transition flex items-center gap-2">
-                    <i class="fa-solid fa-store"></i> Small Business Marketing Packs
-                </button>
-            </div>
+            <!-- DETAILED WEB APP DESCRIPTION SECTION -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-rwa-gold/5 rounded-bl-full pointer-events-none"></div>
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-rwa-terracotta uppercase tracking-wider block">About SciBiz Studio AI</span>
+                    <h3 class="text-2xl font-bold text-slate-900">What Is SciBiz Studio AI & How Does It Work?</h3>
+                </div>
 
-            <!-- ACADEMIC PACKS LIST -->
-            <div id="academic-category" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Academic Item 1 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Pure Sciences & PCB</span>
-                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
+                        <div class="flex items-center gap-2 font-bold text-slate-900 text-base">
+                            <i class="fa-solid fa-graduation-cap text-rwa-indigo"></i> 1. High School Academic Packages
                         </div>
-                        <h3 class="font-bold text-lg text-slate-900">S4-S6 Biology & Chemistry Summaries</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Complete unit summary guides, key diagrams, organic chemistry mechanisms, and genetics past paper breakdowns.</p>
-                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Clear topic summaries</li>
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Past exam questions with answers</li>
-                        </ul>
+                        <p>
+                            SciBiz Studio AI synthesizes complex curriculum guidelines across <strong>ALL secondary school combinations</strong> (Sciences, Humanities, Arts, Business, Languages, and Technology). Each order provides an <em>International Standard Full Package Document</em> containing core theoretical frameworks, worked exam problems, and formula cheat sheets.
+                        </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block">Price</span>
-                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 font-bold text-slate-900 text-base">
+                            <i class="fa-solid fa-chart-line text-rwa-terracotta"></i> 2. Small Business Marketing Studio
                         </div>
-                        <button onclick="openOrderModal('S4-S6 Biology & Chemistry Summaries', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
-                            Order via MoMo
-                        </button>
+                        <p>
+                            For local brands, shops, salons, and electronics hubs, SciBiz Studio AI creates comprehensive digital branding packs—including custom promotional flyers, brand identity guidelines, and high-converting Kinyarwanda/English captions ready for WhatsApp Status and Instagram.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Academic Item 2 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-md">Arts & Humanities</span>
-                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-rwa-green/10 text-rwa-green flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-shield-check"></i>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-900">History, Geography & Literature Cheat Sheets</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">High-yield revision notes covering major African and world history topics, map work guidelines, and literary analysis key points.</p>
-                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Structured essay templates</li>
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> National examination tips</li>
-                        </ul>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                         <div>
-                            <span class="text-xs text-slate-400 block">Price</span>
-                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                            <strong class="text-slate-900 block">Instant MoMo Delivery Guaranteed</strong>
+                            <span class="text-slate-500">Order online, submit your payment transaction ID, and receive your digital package on WhatsApp (`0735958276`).</span>
                         </div>
-                        <button onclick="openOrderModal('History, Geography & Literature Cheat Sheets', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
-                            Order via MoMo
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Academic Item 3 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-md">Business & Mathematics</span>
-                            <span class="text-xs font-bold text-slate-400">PDF Guide</span>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900">Economics, Entrepreneurship & Math Formula Sheets</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Step-by-step mathematical formulas, economics graphs simplified, and business case study templates for Senior students.</p>
-                        <ul class="text-xs text-slate-500 space-y-1 pt-2">
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Quick formula cheat sheet</li>
-                            <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Worked calculation examples</li>
-                        </ul>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block">Price</span>
-                            <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
-                        </div>
-                        <button onclick="openOrderModal('Economics, Entrepreneurship & Math Formula Sheets', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
-                            Order via MoMo
-                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- BUSINESS PACKS LIST -->
-            <div id="business-category" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
-                <!-- Business Package 1 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md">Starter Package</span>
-                            <span class="text-xs font-bold text-slate-400">WhatsApp / Instagram</span>
+            <!-- SERVICE CATALOG SECTION -->
+            <div id="services-section" class="space-y-6">
+                <!-- Service Selection Tabs -->
+                <div class="flex flex-wrap gap-4 border-b border-slate-200 pb-4">
+                    <button onclick="toggleClientCategory('academic')" id="cat-academic-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-rwa-indigo text-white shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> High School Academic Packs (All Subjects)
+                    </button>
+                    <button onclick="toggleClientCategory('business')" id="cat-business-btn" class="px-6 py-3 rounded-xl font-bold text-sm bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200 transition flex items-center gap-2">
+                        <i class="fa-solid fa-store"></i> Small Business Marketing Packs
+                    </button>
+                </div>
+
+                <!-- ACADEMIC PACKS LIST -->
+                <div id="academic-category" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Academic Item 1 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Pure Sciences & PCB</span>
+                                <span class="text-xs font-bold text-slate-400">Full International Package</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">S4-S6 Sciences Comprehensive Bundle</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Complete unit summary guides, key diagrams, organic chemistry mechanisms, and genetics past paper breakdowns.</p>
+                            <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Full theory & definitions</li>
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Step-by-step past paper solutions</li>
+                            </ul>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-900">3 Custom Business Flyers + WhatsApp Status Captions</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Get 3 professionally styled promotional flyers tailored to your shop, salon, or service, plus high-converting promotional text in Kinyarwanda or English.</p>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                            </div>
+                            <button onclick="openOrderModal('S4-S6 Sciences Comprehensive Bundle', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                                Order via MoMo
+                            </button>
+                        </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block">Price</span>
-                            <span class="text-lg font-black text-rwa-terracotta">5,000 RWF</span>
+
+                    <!-- Academic Item 2 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-md">Arts & Humanities</span>
+                                <span class="text-xs font-bold text-slate-400">Full International Package</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">History, Geography & Literature Bundle</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">High-yield revision notes covering major African and world history topics, map work guidelines, and literary analysis key points.</p>
+                            <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Structured essay templates</li>
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> National examination tips</li>
+                            </ul>
                         </div>
-                        <button onclick="openOrderModal('3 Custom Business Flyers + Captions', 5000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
-                            Order via MoMo
-                        </button>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                            </div>
+                            <button onclick="openOrderModal('History, Geography & Literature Bundle', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                                Order via MoMo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Academic Item 3 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-md">Business & Mathematics</span>
+                                <span class="text-xs font-bold text-slate-400">Full International Package</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Economics, Entrepreneurship & Math Formula Sheet</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Step-by-step mathematical formulas, economics graphs simplified, and business case study templates for Senior students.</p>
+                            <ul class="text-xs text-slate-500 space-y-1 pt-2">
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Quick formula cheat sheet</li>
+                                <li><i class="fa-solid fa-check text-rwa-green mr-1.5"></i> Worked calculation examples</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-black text-rwa-terracotta">2,000 RWF</span>
+                            </div>
+                            <button onclick="openOrderModal('Economics, Entrepreneurship & Math Formula Sheet', 2000)" class="px-4 py-2 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+                                Order via MoMo
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Business Package 2 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-md">Pro Branding</span>
-                            <span class="text-xs font-bold text-slate-400">Full Brand Identity</span>
+                <!-- BUSINESS PACKS LIST -->
+                <div id="business-category" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
+                    <!-- Business Package 1 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md">Starter Package</span>
+                                <span class="text-xs font-bold text-slate-400">WhatsApp / Instagram</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">3 Custom Business Flyers + WhatsApp Captions</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Get 3 professionally styled promotional flyers tailored to your shop, salon, or service, plus high-converting promotional text in Kinyarwanda or English.</p>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-900">Full Marketing Pack (5 Flyers + Logo + Price List)</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Complete digital visual overhaul for local businesses including 5 high-resolution flyers, business logo design, and formatted price catalog for WhatsApp status.</p>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-black text-rwa-terracotta">5,000 RWF</span>
+                            </div>
+                            <button onclick="openOrderModal('3 Custom Business Flyers + Captions', 5000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
+                                Order via MoMo
+                            </button>
+                        </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block">Price</span>
-                            <span class="text-lg font-black text-rwa-terracotta">10,000 RWF</span>
+
+                    <!-- Business Package 2 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-md">Pro Branding</span>
+                                <span class="text-xs font-bold text-slate-400">Full Brand Identity</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Full Marketing Pack (5 Flyers + Logo + Price List)</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Complete digital visual overhaul for local businesses including 5 high-resolution flyers, business logo design, and formatted price catalog for WhatsApp status.</p>
                         </div>
-                        <button onclick="openOrderModal('Full Marketing Pack (5 Flyers + Logo + Price List)', 10000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
-                            Order via MoMo
-                        </button>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-black text-rwa-terracotta">10,000 RWF</span>
+                            </div>
+                            <button onclick="openOrderModal('Full Marketing Pack (5 Flyers + Logo + Price List)', 10000)" class="px-4 py-2 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
+                                Order via MoMo
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
 
-        <!-- ==================== OWNER ADMIN VIEW ==================== -->
+        <!-- ==================== OWNER ADMIN VIEW (PASSWORD PROTECTED) ==================== -->
         <section id="admin-view" class="space-y-8 hidden">
             <!-- Owner Control Header -->
-            <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+            <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6 border border-rwa-gold/30">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
                     <div>
                         <span class="text-xs font-bold text-rwa-gold uppercase tracking-wider block">SciBiz Owner Control Panel</span>
-                        <h2 class="text-2xl font-bold">Admin Management & AI Studio</h2>
+                        <h2 class="text-2xl font-bold font-heading">Admin Management & International AI Studio</h2>
                     </div>
-                    <div class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl flex items-center gap-3">
-                        <div class="w-3 h-3 rounded-full bg-rwa-green animate-pulse"></div>
-                        <span class="text-xs text-slate-300">MoMo Verification: <strong class="text-white">ACTIVE</strong></span>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl flex items-center gap-2 text-xs">
+                            <div class="w-2.5 h-2.5 rounded-full bg-rwa-green animate-pulse"></div>
+                            <span class="text-slate-300">MoMo Verification: <strong class="text-white">ACTIVE (0791667329)</strong></span>
+                        </div>
+                        <button onclick="closeAdminPortal()" class="px-3 py-2 bg-red-600/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold hover:bg-red-600/30 transition">
+                            Exit Admin
+                        </button>
                     </div>
                 </div>
 
@@ -284,67 +332,64 @@
                 <!-- Left Column: Pending MoMo Orders Panel -->
                 <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-receipt text-rwa-terracotta"></i> Incoming MoMo Orders
+                        <i class="fa-solid fa-receipt text-rwa-terracotta"></i> Client Orders & Payment Verification
                     </h3>
-                    <p class="text-xs text-slate-500">Verify client transaction IDs with your MTN/Airtel SMS messages before clicking approve.</p>
+                    <p class="text-xs text-slate-500">Confirm transaction IDs against your MTN MoMo (`0791667329`) SMS messages before generating the full package.</p>
 
                     <div id="orders-list" class="space-y-3 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
                         <!-- Empty State -->
                         <div id="empty-orders" class="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200">
                             <i class="fa-solid fa-inbox text-3xl text-slate-300 mb-2"></i>
-                            <p class="text-xs text-slate-500">No pending orders yet.</p>
+                            <p class="text-xs text-slate-500">No client orders submitted yet.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: AI Generator Tool -->
+                <!-- Right Column: International AI Package Studio -->
                 <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-wand-magic-sparkles text-rwa-indigo"></i> Fast AI Document & Marketing Content Studio
+                        <i class="fa-solid fa-wand-magic-sparkles text-rwa-indigo"></i> International Full Package Document Studio
                     </h3>
-                    <p class="text-xs text-slate-500">Generate instant summary notes or promotional flyers to copy and send directly to approved clients on WhatsApp.</p>
+                    <p class="text-xs text-slate-500">Generate comprehensive, multi-section international standard guides or business marketing packs to deliver directly to clients.</p>
 
-                    <!-- Tool Tabs -->
-                    <div class="flex gap-2 border-b border-slate-200 pb-3">
-                        <button onclick="switchStudioTab('notes')" id="studio-tab-notes" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-indigo text-white">Academic Summaries</button>
-                        <button onclick="switchStudioTab('marketing')" id="studio-tab-mkt" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600">Business Captions</button>
-                    </div>
-
-                    <!-- Academic Notes Generator Controls -->
-                    <div id="studio-notes-panel" class="space-y-3">
+                    <!-- Manual Controls -->
+                    <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Subject & Topic Name</label>
-                            <input type="text" id="gen-topic" placeholder="e.g. S6 Biology - Genetics & DNA Replication" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Subject / Business Title</label>
+                            <input type="text" id="gen-topic" placeholder="e.g. Senior 6 Physics & Chemistry Unit 3 or Kimi Electronics Store" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
                         </div>
-                        <button onclick="generateNotesContent()" class="w-full py-2.5 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
-                            Generate Revision Summary
-                        </button>
-                    </div>
-
-                    <!-- Business Marketing Generator Controls -->
-                    <div id="studio-marketing-panel" class="space-y-3 hidden">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Business Name & Offer Details</label>
-                            <input type="text" id="gen-biz-name" placeholder="e.g. Kimi Electronics - Special discount on headphones" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rwa-indigo outline-none">
-                        </div>
-                        <button onclick="generateMarketingContent()" class="w-full py-2.5 bg-rwa-terracotta text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition">
-                            Generate Social Media Captions
+                        <button onclick="generateInternationalPackage()" class="w-full py-2.5 bg-rwa-indigo text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-file-export"></i> Generate International Full Package
                         </button>
                     </div>
 
                     <!-- Output Area -->
                     <div class="mt-4">
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-xs font-bold text-slate-500">Generated Content Output:</span>
-                            <button onclick="copyOutputText()" class="text-xs text-rwa-indigo font-bold hover:underline"><i class="fa-regular fa-copy mr-1"></i> Copy All</button>
+                            <span class="text-xs font-bold text-slate-500">Generated International Output:</span>
+                            <button onclick="copyOutputText()" class="text-xs text-rwa-indigo font-bold hover:underline"><i class="fa-regular fa-copy mr-1"></i> Copy Full Package</button>
                         </div>
-                        <textarea id="studio-output" rows="8" readonly class="w-full text-xs p-3 font-mono bg-slate-50 border border-slate-200 rounded-lg outline-none text-slate-800 leading-relaxed custom-scrollbar" placeholder="Generated text will appear here..."></textarea>
+                        <textarea id="studio-output" rows="12" readonly class="w-full text-xs p-3 font-mono bg-slate-50 border border-slate-200 rounded-lg outline-none text-slate-800 leading-relaxed custom-scrollbar" placeholder="Generated international document package will appear here..."></textarea>
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Footer with Discrete Admin Access Link -->
+    <footer class="bg-rwa-indigo text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© SciBiz Studio AI - Kigali, Rwanda. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <span>Designed for NESA Students & Local Brands</span>
+                <button onclick="promptAdminLogin()" class="text-slate-500 hover:text-slate-300 transition text-[10px] underline">
+                    Admin Access
+                </button>
+            </div>
+        </div>
+    </footer>
+    <div class="h-2 imigongo-border"></div>
 
     <!-- Modal Order Checkout Popup -->
     <div id="order-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
@@ -362,7 +407,7 @@
             <!-- MoMo Instructions Box -->
             <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
                 <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Money Instructions:</p>
-                <p>Send payment to MTN MoMo code/number: <strong class="text-slate-900 underline">078X XXX XXX (SciBiz Studio)</strong></p>
+                <p>Send payment to MTN MoMo Number: <strong class="text-slate-900 underline text-sm">0791667329</strong> (SciBiz Studio)</p>
             </div>
 
             <!-- Form Inputs -->
@@ -395,24 +440,24 @@
         let pendingCount = 0;
         let completedCount = 0;
         let currentModalItem = { title: '', price: 0 };
+        const ADMIN_PASSWORD = "High46...com"; // Owner Admin Password
+        const ADMIN_WHATSAPP = "250735958276"; // Your WhatsApp number
 
-        // Tab Switching Logic
-        function switchTab(tabId) {
-            document.getElementById('client-view').classList.add('hidden');
-            document.getElementById('admin-view').classList.add('hidden');
-            
-            document.getElementById(tabId).classList.remove('hidden');
-
-            const clientBtn = document.getElementById('nav-client-btn');
-            const adminBtn = document.getElementById('nav-admin-btn');
-
-            if (tabId === 'client-view') {
-                clientBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition";
-                adminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition";
-            } else {
-                adminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-rwa-gold text-rwa-indigo shadow transition";
-                clientBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition";
+        // Admin Access Protection
+        function promptAdminLogin() {
+            const pwd = prompt("Enter SciBiz Admin Access Password:");
+            if (pwd === ADMIN_PASSWORD) {
+                document.getElementById('client-view').classList.add('hidden');
+                document.getElementById('admin-view').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (pwd !== null) {
+                alert("Incorrect Password!");
             }
+        }
+
+        function closeAdminPortal() {
+            document.getElementById('admin-view').classList.add('hidden');
+            document.getElementById('client-view').classList.remove('hidden');
         }
 
         // Toggle Client Categories
@@ -480,9 +525,9 @@
             document.getElementById('cust-phone').value = '';
             document.getElementById('cust-txid').value = '';
 
-            // Redirect to WhatsApp confirmation
+            // Redirect to your WhatsApp number (0735958276)
             const whatsappMsg = `Hello SciBiz Studio! I submitted an order for "${currentModalItem.title}" (${currentModalItem.price} RWF). My Name: ${name}, MoMo TxID: ${txid}`;
-            window.open(`https://wa.me/250780000000?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
         }
 
         // Render Admin Orders
@@ -512,12 +557,12 @@
                         <p><strong>MoMo TxID:</strong> <code class="bg-white px-1 py-0.5 rounded border border-slate-200 font-bold">${order.txid}</code></p>
                     </div>
                     ${order.status === 'pending' ? `
-                        <button onclick="approveOrder(${order.id})" class="w-full mt-2 py-1.5 bg-rwa-green text-white font-bold text-xs rounded-lg hover:bg-emerald-700 transition">
-                            Approve & Deliver Package
+                        <button onclick="approveOrder(${order.id})" class="w-full mt-2 py-2 bg-rwa-green text-white font-bold text-xs rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-check-double"></i> Approve & Generate Full Package
                         </button>
                     ` : `
                         <div class="text-xs font-bold text-emerald-700 flex items-center gap-1 mt-1">
-                            <i class="fa-solid fa-circle-check"></i> Payment Approved & Delivered
+                            <i class="fa-solid fa-circle-check"></i> Approved & Package Ready
                         </div>
                     `}
                 `;
@@ -525,7 +570,7 @@
             });
         }
 
-        // Approve Order Logic
+        // Approve Order & Auto Generate Full Package
         function approveOrder(orderId) {
             const order = activeOrders.find(o => o.id === orderId);
             if (order && order.status === 'pending') {
@@ -535,6 +580,10 @@
                 completedCount++;
                 updateMetrics();
                 renderOrders();
+
+                // Auto-populate generator input and run generator
+                document.getElementById('gen-topic').value = order.item;
+                generateInternationalPackage();
             }
         }
 
@@ -544,80 +593,65 @@
             document.getElementById('metric-completed').innerText = completedCount;
         }
 
-        // Studio Generator Tools
-        function switchStudioTab(tab) {
-            const notesPanel = document.getElementById('studio-notes-panel');
-            const mktPanel = document.getElementById('studio-marketing-panel');
-            const tabNotes = document.getElementById('studio-tab-notes');
-            const tabMkt = document.getElementById('studio-tab-mkt');
+        // International Standard Full Package Generator
+        function generateInternationalPackage() {
+            const title = document.getElementById('gen-topic').value.trim() || 'General Academic & Business Package';
+            
+            const fullPackageDoc = `================================================================================
+SCIBIZ STUDIO AI — INTERNATIONAL FULL PACKAGE DOCUMENT
+Target Domain: ${title}
+Curriculum Standard: NESA & International Equivalent Framework
+================================================================================
 
-            if (tab === 'notes') {
-                notesPanel.classList.remove('hidden');
-                mktPanel.classList.add('hidden');
-                tabNotes.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-indigo text-white";
-                tabMkt.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600";
-            } else {
-                mktPanel.classList.remove('hidden');
-                notesPanel.classList.add('hidden');
-                tabMkt.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-rwa-terracotta text-white";
-                tabNotes.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600";
-            }
-        }
+SECTION 1: EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+This comprehensive package delivers verified, high-yield academic framework notes and practical problem-solving sets.
+• Core Objective: Mastery of foundational principles, examination mechanisms, and analytical problem solving.
+• Scope: Complete unit breakdown with examination tips and worked national paper solutions.
 
-        function generateNotesContent() {
-            const topic = document.getElementById('gen-topic').value.trim() || 'General Revision Topic';
-            const output = `=========================================
-SCIBIZ STUDIO ACADEMIC REVISION GUIDE
-Topic: ${topic}
-Target: High School NESA Exam Preparation
-=========================================
+SECTION 2: FOUNDATIONAL THEORY & CORE CONCEPTS
+--------------------------------------------------------------------------------
+1. Primary Principles:
+   - Detailed conceptual definitions with underlying theoretical foundations.
+   - Key terminology explicitly structured for national exam marking schemes.
 
-1. KEY DEFINITIONS & CORE CONCEPTS
------------------------------------------
-• Point 1: Fundamental principle overview with step-by-step breakdown.
-• Point 2: Core mechanism and critical exam terminology.
+2. Critical Analytical Mechanisms:
+   - Step-by-step logic breakdown for key unit processes.
+   - Visual/Structural representation guidelines for diagrams and formula derivations.
 
-2. EXAMINATION PAST PAPER SUMMARY
------------------------------------------
-Q1: Explain the primary mechanism involved in this unit.
-Ans: Direct step-by-step outline optimized for marking schemes.
+SECTION 3: WORKED EXAM PROBLEMS & ANALYTICAL SOLUTIONS
+--------------------------------------------------------------------------------
+[Question 1 - High Probability National Exam Pattern]
+Q: Explain the primary mechanism governing this unit and derive the fundamental relation.
+Solution:
+  Step 1: State the basic law/principle clearly.
+  Step 2: Apply boundary conditions or relevant variables.
+  Step 3: Final mathematical derivation or structured essay conclusion.
 
-3. REVISION CHEAT SHEET SUMMARY
------------------------------------------
-• Memory Tip: Focus on keywords highlighted during national review.
-• Formula/Key Rule: Primary rule stated clearly for quick memorization.
+[Question 2 - Practical Application & Case Study]
+Q: Analyze the real-world impact and common practical mistakes students make.
+Solution: Detailed analytical breakdown structured to maximize grading rubrics.
 
-[Generated by SciBiz Studio AI - Kigali, Rwanda]`;
+SECTION 4: MEMORY FLASHCARDS & REVISION CHEAT SHEET
+--------------------------------------------------------------------------------
+• Flashcard 1: [Term] ➔ Precise definition required for full score.
+• Flashcard 2: [Formula/Rule] ➔ Quick application shortcut for timed exams.
+• Memory Tip: Always check units, key keywords, and step sequence.
 
-            document.getElementById('studio-output').value = output;
-        }
+================================================================================
+Generated by SciBiz Studio AI Owner Portal | Kigali, Rwanda
+MoMo: 0791667329 | WhatsApp: 0735958276
+Ready for Delivery to Verified Client
+================================================================================`;
 
-        function generateMarketingContent() {
-            const biz = document.getElementById('gen-biz-name').value.trim() || 'Local Store';
-            const output = `=========================================
-SCIBIZ MARKETING CAPTION PACK
-Business: ${biz}
-=========================================
-
-📱 WHATSAPP STATUS CAPTION (Kinyarwanda):
-"Muraho! 🇷🇼 Mwamaze kubona ibyiza twazaniye muri ${biz}? Quality yo ku rwego rwo hejuru ku giciro kiza! Hamagara cyangwa utwandikire kuri WhatsApp ubone ibyo ukeneye vuba!"
-
-📸 INSTAGRAM / FACEBOOK CAPTION (English):
-"Upgrade your style & quality with ${biz}! ✨ Unbeatable value and top-tier customer service right here in town. Send us a direct message to place your order today! 📦🚀"
-
-🎨 FLYER VISUAL CONCEPT LAYOUT:
-• Top Banner: Bold title featuring business name.
-• Center: Product showcase with badge highlighting special offer.
-• Bottom Bar: Phone number + WhatsApp call to action button.`;
-
-            document.getElementById('studio-output').value = output;
+            document.getElementById('studio-output').value = fullPackageDoc;
         }
 
         function copyOutputText() {
             const textarea = document.getElementById('studio-output');
             textarea.select();
             document.execCommand('copy');
-            alert('Content copied to clipboard!');
+            alert('Full International Package copied to clipboard!');
         }
     </script>
 </body>
